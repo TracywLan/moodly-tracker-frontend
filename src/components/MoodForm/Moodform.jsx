@@ -133,4 +133,4 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         </main>
     )
 }
-export default Moodform
+export default MoodForm

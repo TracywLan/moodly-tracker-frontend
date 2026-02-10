@@ -7,7 +7,7 @@ const navigate = useNavigate()
 
 const [mood, setMood] = useState(null)
 const [error, setError] = useState("")
-const BASE_URL = "http://localhost:3000/api/moods"
+const BASE_URL = "http://localhost:3000/moods"
 
 
 useEffect(() => {
