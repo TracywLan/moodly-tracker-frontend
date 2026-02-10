@@ -56,7 +56,8 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
             await  handleAddMood(formData);
         }
 
-        setFormData(initialState)
+        setFormData(initialState);
+        navigate('/moods')
     };
     return (
         <main>
