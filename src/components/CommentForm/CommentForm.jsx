@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useParams} from "react-router"
 import { toast } from "react-toastify"
-import * as moodService from "../../services/moodServices"
+import * as moodService from "../../services/moodService"
 
 
 const CommentForm = (props) => {

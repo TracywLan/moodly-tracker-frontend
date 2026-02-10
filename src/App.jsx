@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
-import { Routes, Route, useNavigate, Navigate } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
 import "./App.css"
 import NavBar from './components/NavBar/NavBar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
@@ -7,7 +7,8 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import MoodList from './components/MoodList/MoodList';
-import Moodform from './components/MoodForm/MoodForm';
+import MoodDetails from './components/MoodDetails/MoodDetails';
+import Moodform from './components/MoodForm/Moodform';
 import CommentForm from './components/CommentForm/CommentForm';
 import * as moodService from './services/moodService';
 
@@ -54,8 +55,9 @@ const App = () => {
       <Routes>
         { user ? (
           <>
-            <Route path='/dashboard' element={<Dashboard /> } />
+            <Route path='/' element={<Dashboard /> } />
             <Route path='/moods' element={ <MoodList moods={moods} />} />   
+            <Route path='/moods/:moodId' element={<MoodDetails />} /> 
             <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
             <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/>  
             <Route path='/moods/:moodId/comments/new' element={<CommentForm handleAddComment={handleAddComment}/>}/>  
@@ -67,12 +69,7 @@ const App = () => {
             <Route path='/sign-up' element={<SignUpForm />} />
             <Route path='/sign-in' element={<SignInForm />} />
           </>
-        )}
-        {/* Public Routes */}
-        
-
-
-        
+        )}  
       </Routes>
     </>
   );
