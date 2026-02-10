@@ -26,7 +26,7 @@ const show = async (moodId) => {
     
 const create = async (moodFormData) => {
     try {
-        const res = await fetch (BASE_URL, {
+        const res = await fetch(BASE_URL, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -42,7 +42,7 @@ const create = async (moodFormData) => {
 
 const update = async (moodId, moodFormData) => {
     try {
-        const res = await fetch (`${BASE_URL}/${moodId}`, {
+        const res = await fetch(`${BASE_URL}/${moodId}`, {
             method: 'PUT',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -59,7 +59,7 @@ const update = async (moodId, moodFormData) => {
 
 const deleteMood = async (moodId) => {
     try {
-        const res = await fetch (`${BASE_URL}/${moodId}`, {
+        const res = await fetch(`${BASE_URL}/${moodId}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -74,7 +74,7 @@ const deleteMood = async (moodId) => {
 // Comments
 const addComment = async (moodId, commentFormData) => {
     try {
-        const res = await fetch (`${BASE_URL}/${moodId}/comments`, {
+        const res = await fetch(`${BASE_URL}/${moodId}/comments`, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -95,7 +95,7 @@ const addComment = async (moodId, commentFormData) => {
 
 const updateComment = async (moodId, commentId, commentFormData) => {
     try {
-        const res = await fetch (`${BASE_URL}/${moodId}/comments/${commentId}`, {
+        const res = await fetch(`${BASE_URL}/${moodId}/comments/${commentId}`, {
             method: 'PUT',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -116,16 +116,20 @@ const updateComment = async (moodId, commentId, commentFormData) => {
 
 const deleteComment = async (moodId, commentId) => {
     try {
-        const res = await fetch (`${BASE_URL}/${moodId}/comments/${commentId}`, {
+        const res = await fetch(`${BASE_URL}/${moodId}/comments/${commentId}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json',
             },
         });
-        return res.json();
+        if(!res.ok){
+        const errData = await res.json();
+        throw new Error(errData || "Failed to delete comment")
+    }
+
+    return await res.json();
     } catch (error) {
-        console.log(error);
+        throw new Error(error.message)
     }
 };
 
