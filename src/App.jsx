@@ -56,7 +56,7 @@ const App = () => {
     return comment;
   }
 
-  const handleUpdateComment = async (moodId, commentId,formData) => {
+  const handleUpdateComment = async (moodId, commentId, formData) => {
     const updatedMood = await moodService.updateComment(moodId, commentId,formData);
     return updatedMood
   }
