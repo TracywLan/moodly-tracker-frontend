@@ -32,9 +32,9 @@ const CommentForm = (props) => {
         e.preventDefault();
 
         if(moodId && commentId) {
-            props.handleUpdateComment(formData,commentId,moodId)
+            props.handleUpdateComment(moodId, commentId, formData)
         } else {
-            props.handleAddComment(formData,moodId)
+            props.handleAddComment(moodId, formData)
         }
 
         setFormData({text: ""});

@@ -11,7 +11,7 @@ const initialState = {
 };
 
 const MoodForm = ({ handleAddMood, handleEditMood }) => {
-    const [formData,setFormData] =useState(initialState)
+    const [formData,setFormData] = useState(initialState)
     const { moodId } = useParams();
 
     useEffect(() => {
@@ -51,9 +51,9 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         e.preventDefault();
 
         if(moodId) {
-            await handleEditMood(formData,moodId);
+            await handleEditMood(moodId, formData);
         } else {
-           await  handleAddMood(formData);
+            await  handleAddMood(formData);
         }
 
         setFormData(initialState)
