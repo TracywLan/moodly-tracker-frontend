@@ -52,17 +52,27 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
+        { user ? (
+          <>
+            <Route path='/dashboard' element={<Dashboard /> } />
+            <Route path='/moods' element={ <MoodList moods={moods} />} />   
+            <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
+            <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/>  
+            <Route path='/moods/:moodId/comments/new' element={<CommentForm handleAddComment={handleAddComment}/>}/>  
+            <Route path='/moods/:moodId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment}/>}/>
+          </>
+        ) : (
+          <>
+            <Route path='/' element={<Landing /> } />
+            <Route path='/sign-up' element={<SignUpForm />} />
+            <Route path='/sign-in' element={<SignInForm />} />
+          </>
+        )}
         {/* Public Routes */}
-        <Route path='/' element={user ? <Dashboard /> : <Landing /> } />
-        <Route path='/sign-up' element={<SignUpForm />} />
-        <Route path='/sign-in' element={<SignInForm />} />
+        
 
 
-        <Route path='/moods' element={user ? <MoodList moods={moods} /> : <Navigate to="/sign-in"/>} />   
-        <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
-        <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/>  
-        <Route path='/moods/:moodId/comments/new' element={<CommentForm handleAddComment={handleAddComment}/>}/>  
-        <Route path='/moods/:moodId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment}/>}/>
+        
       </Routes>
     </>
   );
