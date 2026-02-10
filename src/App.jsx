@@ -31,14 +31,16 @@ const App = () => {
 
   const handleAddMood = async (formData) => {
     const newMood = await moodService.create(formData);
-    return newMood;
+    setMoods((prev) => [...prev,newMood])
   };
 
   const handleEditMood = async (formData,moodId) => {
-    const updatedMood = await moodService.update(formData,moodId);
-    setMoods((prev) => [...prev,newMood])
-    return updatedMood;
-  }
+    const updatedMood = await moodService.update(moodId,formData);
+    setMoods((prev) => prev.map((mood) =>
+    mood._id === updatedMood._id ? updatedMood : mood
+  )
+);
+  };
 
   const handleAddComment = async ( formData,moodId) => {
     const updatedMood = await moodService.addComment(formData,moodId);

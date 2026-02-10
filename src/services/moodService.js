@@ -24,7 +24,7 @@ const show = async (moodId) => {
     }
 };
     
-const create = async (MoodForm) => {
+const create = async (moodFormData) => {
     try {
         const res = await fetch (BASE_URL, {
             method: 'POST',
@@ -32,7 +32,7 @@ const create = async (MoodForm) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(MoodForm)
+            body: JSON.stringify(moodFormData)
         });
         return res.json();
     } catch (error) {
@@ -40,7 +40,7 @@ const create = async (MoodForm) => {
     }
 }
 
-const update = async (moodFormData, moodId) => {
+const update = async (moodId, moodFormData) => {
     try {
         const res = await fetch (`${BASE_URL}/${moodId}`, {
             method: 'PUT',
