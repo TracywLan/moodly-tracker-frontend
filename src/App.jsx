@@ -42,6 +42,10 @@ const App = () => {
 );
   };
 
+  const handleDeleteMood = (moodId) => {
+    setMoods((prev) => prev.filter((mood)=> mood._id !== moodId))
+  }
+
   const handleAddComment = async ( formData,moodId) => {
     const updatedMood = await moodService.addComment(formData,moodId);
     return updatedMood;
@@ -60,7 +64,7 @@ const App = () => {
           <>
             <Route path='/' element={<Dashboard /> } />
             <Route path='/moods' element={ <MoodList moods={moods} />} />   
-            <Route path='/moods/:moodId' element={<MoodDetails />} /> 
+            <Route path='/moods/:moodId' element={<MoodDetails user={user} moods={moods} setMoods={setMoods} handleDeleteMood={handleDeleteMood}/>} /> 
             <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
             <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/>  
             <Route path='/moods/:moodId/comments/new' element={<CommentForm handleAddComment={handleAddComment}/>}/>  
