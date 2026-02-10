@@ -24,7 +24,7 @@ const show = async (moodId) => {
     }
 };
     
-const create = async (moodForm) => {
+const create = async (moodFormData) => {
     try {
         const res = await fetch(BASE_URL, {
             method: 'POST',
@@ -32,7 +32,7 @@ const create = async (moodForm) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(moodForm)
+            body: JSON.stringify(moodFormData)
         });
         return res.json();
     } catch (error) {

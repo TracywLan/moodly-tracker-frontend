@@ -31,7 +31,7 @@ const App = () => {
 
   const handleAddMood = async (formData) => {
     const newMood = await moodService.create(formData);
-    return newMood;
+    setMoods((prev) => [...prev,newMood])
   };
 
   const handleEditMood = async (moodId, formData) => {
