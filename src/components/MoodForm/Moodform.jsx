@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {useParams} from "react-router"
+import {useNavigate, useParams} from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify"
 
@@ -13,6 +13,7 @@ const initialState = {
 const MoodForm = ({ handleAddMood, handleEditMood }) => {
     const [formData,setFormData] =useState(initialState)
     const { moodId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMood = async () => {
@@ -52,8 +53,10 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
 
         if(moodId) {
             await handleEditMood(formData,moodId);
+            navigate(`/moods/${moodId}`)
         } else {
            await  handleAddMood(formData);
+           navigate("/moods")
         }
 
         setFormData(initialState)
