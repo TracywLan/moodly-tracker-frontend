@@ -1,5 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/moods`;
 
+// Moods
 const index = async () => {
     try {
         const res = await fetch(BASE_URL, {
@@ -69,7 +70,54 @@ const deleteMood = async (moodId) => {
     }
 };
 
+// Comments
+const createComment = async (moodId, commentFormData) => {
+    try {
+        const res = await fetch (`${BASE_URL}/${moodId}/comments`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(commentFormData),
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const updateComment = async (moodId, commentId, commentFormData) => {
+    try {
+        const res = await fetch (`${BASE_URL}/${moodId}/comments/${commentId}`, {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(commentFormData),
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const deleteComment = async (moodId, commentId) => {
+    try {
+        const res = await fetch (`${BASE_URL}/${moodId}/comments/${commentId}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 export { 
-    index,show,create,update,deleteMood
+    index,show,create,update,deleteMood, createComment, updateComment, deleteComment
 };
