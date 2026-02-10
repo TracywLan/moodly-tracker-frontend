@@ -7,7 +7,7 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import MoodList from './components/MoodList/MoodList';
-import Moodform from './pages/MoodForm/Moodform';
+import Moodform from './components/MoodForm/MoodForm';
 import CommentForm from './components/CommentForm/CommentForm';
 import * as moodService from './services/moodService';
 
