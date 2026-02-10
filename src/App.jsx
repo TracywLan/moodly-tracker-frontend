@@ -34,21 +34,18 @@ const App = () => {
     setMoods((prev) => [...prev,newMood])
   };
 
-  const handleEditMood = async (formData,moodId) => {
-    const updatedMood = await moodService.update(moodId,formData);
-    setMoods((prev) => prev.map((mood) =>
-    mood._id === updatedMood._id ? updatedMood : mood
-  )
-);
-  };
-
-  const handleAddComment = async ( formData,moodId) => {
-    const updatedMood = await moodService.addComment(formData,moodId);
+  const handleEditMood = async (moodId, formData) => {
+    const updatedMood = await moodService.update(moodId, formData);
     return updatedMood;
   }
 
-  const handleUpdateComment = async (formData,commentId,moodId) => {
-    const updatedMood = await moodService.updateComment(formData,commentId,moodId);
+  const handleAddComment = async (moodId, formData) => {
+    const comment = await moodService.addComment(moodId, formData);
+    return comment;
+  }
+
+  const handleUpdateComment = async (moodId, commentId,formData) => {
+    const updatedMood = await moodService.updateComment(moodId, commentId,formData);
     return updatedMood
   }
 
@@ -62,7 +59,7 @@ const App = () => {
             <Route path='/moods' element={ <MoodList moods={moods} />} />   
             <Route path='/moods/:moodId' element={<MoodDetails />} /> 
             <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
-            <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/>  
+            <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood} />} />  
             <Route path='/moods/:moodId/comments/new' element={<CommentForm handleAddComment={handleAddComment}/>}/>  
             <Route path='/moods/:moodId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment}/>}/>
           </>
