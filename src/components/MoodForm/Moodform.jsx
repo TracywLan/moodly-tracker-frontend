@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import {useParams} from "react-router"
 import * as moodService from "../../services/moodService"
-import {toast} from "react-toastify"
+import {toast} from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
     rating: 3,
@@ -13,6 +14,7 @@ const initialState = {
 const MoodForm = ({ handleAddMood, handleEditMood }) => {
     const [formData,setFormData] = useState(initialState)
     const { moodId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMood = async () => {
@@ -59,6 +61,7 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         setFormData(initialState);
         navigate('/moods')
     };
+
     return (
         <main>
             <h1>{moodId ? "Edit Mood" : "New Mood"}</h1>
