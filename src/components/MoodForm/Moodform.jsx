@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {useParams} from "react-router"
+import {useNavigate, useParams} from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify";
 import { useNavigate } from "react-router-dom";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
-export default function MoodDetails({ user }) {
+export default function MoodDetails({ user,moods,setMoods }) {
 const { moodId } = useParams()
 const navigate = useNavigate()
 
@@ -27,9 +27,13 @@ fetchMood()
 
 const handleDelete = async () => {
 try {
-await fetch(`${BASE_URL}/${moodId}`, {
-method: "DELETE",
+    await fetch(`${BASE_URL}/${moodId}`, {
+    method: "DELETE",
+    headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+}
 })
+setMoods(moods.filter((mood)=> mood._id !==moodId))
 navigate("/moods")
 } catch (err) {
 console.log(err)
@@ -41,12 +45,12 @@ if (error) return <p>{error}</p>
 if (!mood) return <p>Loading...</p>
 
 
-const ownerId =
-typeof mood.owner === "string"
-? mood.owner
-: mood.owner?._id
+const authorId =
+typeof mood.author === "string"
+? mood.author
+: mood.author?._id
 
-const isOwner = user?._id === ownerId
+const isAuthor = user?._id === authorId
 
 return (
 <main>
@@ -97,7 +101,7 @@ return (
 Back
 </Link>
 
-{isOwner && (
+{isAuthor && (
 <>
 <Link
 className="btn btnPrimary"

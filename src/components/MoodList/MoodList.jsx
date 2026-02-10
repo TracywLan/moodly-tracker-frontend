@@ -22,7 +22,7 @@ const MoodList = (props) => {
                 <div key={mood._id}>
                     <Link to={`/moods/${mood._id}`}>
                         <article>
-                            <header>
+                            <header className="mood-list-header">
                                 <h2>{mood.rating}</h2>
                                 <p>{`${new Date(mood.createdAt).toLocaleDateString()}`}</p>
                             </header>
