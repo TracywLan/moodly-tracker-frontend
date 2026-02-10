@@ -47,13 +47,13 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if(moodId) {
-            handleEditMood(formData,moodId);
+            await handleEditMood(formData,moodId);
         } else {
-            handleAddMood(formData);
+           await  handleAddMood(formData);
         }
 
         setFormData(initialState)
@@ -66,7 +66,7 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
                 <input 
                 type= "number"
                 id="rating-input"
-                name="rating-input"
+                name="rating"
                 min="1"
                 max="5"
                 value={formData.rating}
