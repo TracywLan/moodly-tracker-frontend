@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
-import {useNavigate, useParams} from "react-router-dom"
+import { useState, useEffect, useContext } from "react"
+import {useNavigate, useParams } from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify";
-import { useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import { UserContext } from './contexts/UserContext';
 
 const initialState = {
     rating: 3,
@@ -55,13 +54,14 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         e.preventDefault();
 
         if(moodId) {
-            await handleEditMood(moodId, formData);
+            await handleEditMood(moodId,formData);
+            navigate("/moods")
         } else {
             await  handleAddMood(formData);
+            navigate("/moods")
         }
 
         setFormData(initialState);
-        navigate('/moods')
     };
 
     return (

@@ -34,6 +34,9 @@ const create = async (moodFormData) => {
             },
             body: JSON.stringify(moodFormData)
         });
+        if(!res.ok) {
+            throw new Error(error.message)
+        }
         return res.json();
     } catch (error) {
         console.log(error);

@@ -27,7 +27,7 @@ const Dashboard = ({ moods }) => {
   return (
     <main className='dashboard-container'>
       <h1>Welcome, {user.username}</h1>
-      {/* <MoodCalendar moods={moods}/> */}
+      <MoodCalendar moods={moods}/>
       <MoodStats moods={moods}/>
     </main>
   );
