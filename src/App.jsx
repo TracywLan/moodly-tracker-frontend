@@ -8,7 +8,7 @@ import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import MoodList from './components/MoodList/MoodList';
 import MoodDetails from './components/MoodDetails/MoodDetails';
-import Moodform from './components/MoodForm/Moodform';
+import MoodForm from './components/MoodForm/Moodform';
 import CommentForm from './components/CommentForm/CommentForm';
 import * as moodService from './services/moodService';
 

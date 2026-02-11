@@ -4,9 +4,10 @@ import './MoodCalendar.css';
 
 
 const MoodCalendar = ({ moods }) => {
-//     React-Calendar draws the grid for February.
+    
+
     const getTileEmoji = ({ date, view }) => {
-        if (view !== 'month') return null
+        if (view !== 'month') return null;
 
         const moodForDate = moods.find((mood) => {
             const moodDate = new Date(mood.createdAt);
