@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import {useNavigate, useParams} from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 
 const initialState = {
     rating: 3,
@@ -12,6 +13,7 @@ const initialState = {
 };
 
 const MoodForm = ({ handleAddMood, handleEditMood }) => {
+    const { user } = useContext(UserContext);
     const [formData,setFormData] = useState(initialState)
     const { moodId } = useParams();
     const navigate = useNavigate();
@@ -64,6 +66,8 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
 
     return (
         <main>
+            <h1>Dear {user.username}</h1>
+            <h1>How are you feeling today?</h1>
             <h1>{moodId ? "Edit Mood" : "New Mood"}</h1>
             <form onSubmit={handleSubmit}>{/*Rating*/}
                 <label htmlFor="rating-input">Rating (1-5)</label>

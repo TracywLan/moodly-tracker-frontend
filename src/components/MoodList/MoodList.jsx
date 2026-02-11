@@ -3,7 +3,7 @@ import { UserContext } from '../../contexts/UserContext';
 import { useContext } from 'react';
 
 const MoodList = (props) => {
-    const { user } = useContext(UserContext)
+    const { user } = useContext(UserContext);
 
     const filteredMoods = props.moods.filter(mood => {
         if (!mood.author) return false;
@@ -12,11 +12,20 @@ const MoodList = (props) => {
     })
     const sortMoods = filteredMoods.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
+    const getGreeting = () => {
+        const hour = new Date().getHours();
+
+        if (hour < 12) return 'Good Morning';
+        if (hour < 18 ) return 'Good Evening';
+        return 'Good Evening';
+    }
     
 
     return (
         <main>
-            <h1>Your Mood Entries</h1>
+            <h1>
+                {getGreeting()}, {user ? user.username : 'Friend'}!
+            </h1>
             <Link to ="/moods/new" className="new-mood-btn">+ Add New Entry</Link>
             {sortMoods.map((mood) => (
                 <div key={mood._id}>
