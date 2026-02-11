@@ -1,0 +1,21 @@
+.landing-container {
+    height: 80vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    color: #1F1F1F;
+}
+
+.landing-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.landing-content p {
+    color: #888;
+    margin-bottom: 40px;
+    font-size: 18px;
+}

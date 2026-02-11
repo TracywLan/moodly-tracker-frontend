@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
 
-:root {
-    --bg-color: #FAFAFA;
-    --text-dark: #1F1F1F;
-    --mint-bg: #D1FAE5;
-    --peach-bg: #FFEDD5;
-    --pink-bg: #FCE7F3;
-  }
-
 
 .dashboard-container{
     background-color: var(--bg-color);

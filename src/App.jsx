@@ -51,15 +51,10 @@ const App = () => {
   //   return updatedMood;
   // }
 
-  const handleAddComment = async (moodId, formData) => {
-    const comment = await moodService.addComment(moodId, formData);
-    return comment;
-  }
-
-  const handleUpdateComment = async (moodId, commentId, formData) => {
-    const updatedMood = await moodService.updateComment(moodId, commentId,formData);
-    return updatedMood
-  }
+  // const handleUpdateComment = async (formData,commentId,moodId) => {
+  //   const updatedMood = await moodService.updateComment(moodId,commentId,formData);
+  //   return updatedMood
+  // }
 
   return (
     <>
@@ -70,10 +65,9 @@ const App = () => {
             <Route path='/' element={<Dashboard moods={moods}/> } />
             <Route path='/moods' element={ <MoodList moods={moods} />} />   
             <Route path='/moods/:moodId' element={<MoodDetails user={user} moods={moods} setMoods={setMoods} handleDeleteMood={handleDeleteMood}/>} /> 
-            <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
-            <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood} />} />  
-            <Route path='/moods/:moodId/comments/new' element={<CommentForm handleAddComment={handleAddComment}/>}/>  
-            <Route path='/moods/:moodId/comments/:commentId/edit' element={<CommentForm handleUpdateComment={handleUpdateComment}/>}/>
+            <Route path='/moods/new' element={<MoodForm handleAddMood={handleAddMood}/>} /> 
+            <Route path='/moods/:moodId/edit' element={<MoodForm handleEditMood={handleEditMood}/>}/>  
+
           </>
         ) : (
           <>

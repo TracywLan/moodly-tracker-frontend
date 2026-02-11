@@ -4,9 +4,10 @@ import { UserContext } from '../../contexts/UserContext';
 import * as userService from '../../services/userService';
 import MoodCalendar from '../MoodCalendar/MoodCalendar';
 import MoodList from '../MoodList/MoodList';
+import MoodStats from '../MoodStats/MoodStats'
 
 
-const Dashboard = (moods) => {
+const Dashboard = ({ moods }) => {
   const { user } = useContext(UserContext);
   const [ users, setUsers ] = useState([]);
 
@@ -22,10 +23,12 @@ const Dashboard = (moods) => {
     if (user) fetchUsers();
   }, [user]);
 
+
   return (
     <main className='dashboard-container'>
       <h1>Welcome, {user.username}</h1>
-      <MoodCalendar moods={moods}/>
+      {/* <MoodCalendar moods={moods}/> */}
+      <MoodStats moods={moods}/>
     </main>
   );
 };
