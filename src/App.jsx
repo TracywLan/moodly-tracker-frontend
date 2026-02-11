@@ -52,7 +52,7 @@ const App = () => {
       <Routes>
         { user ? (
           <>
-            <Route path='/' element={<Dashboard /> } />
+            <Route path='/' element={<Dashboard moods={moods}/> } />
             <Route path='/moods' element={ <MoodList moods={moods} />} />   
             <Route path='/moods/:moodId' element={<MoodDetails user={user} moods={moods} setMoods={setMoods} handleDeleteMood={handleDeleteMood}/>} /> 
             <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 

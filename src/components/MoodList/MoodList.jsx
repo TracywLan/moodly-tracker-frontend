@@ -8,40 +8,42 @@ const MoodList = ({ moods }) => {
     const filteredMoods = moods.filter((mood) => {
         if (!mood.author) return false;
         return mood.author?._id?.toString() === user?._id?.toString();
-    });
+    })
+    const sortMoods = filteredMoods.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    const sortedMoods = filteredMoods.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
+    const getGreeting = () => {
+        const hour = new Date().getHours();
 
-  return (
-    <main>
-      <h1>Your Mood Entries</h1>
-      <Link to="/moods/new" className="new-mood-btn">
-        + Add New Entry
-      </Link>
+        if (hour < 12) return 'Good Morning';
+        if (hour < 18 ) return 'Good Evening';
+        return 'Good Evening';
+    }
+    
 
-      {sortedMoods.map((mood) => {
-
-        return (
-          <div key={mood._id} style={{ border: "1px solid #ccc", padding: "10px", margin: "10px 0" }}>
-            <Link to={`/moods/${mood._id}`}>
-              <header className="mood-list-header">
-                <h2>{mood.moodLabel}</h2>
-                <p>Reason: {mood.note}</p>
-                <p>Posted by {mood.author.username}</p>
-                <p>Posted on {new Date(mood.createdAt).toLocaleDateString()}</p>
-              </header>
-              <div>
-              </div>
-            </Link>
-
-
-          </div>
-        );
-      })}
-    </main>
-  );
+    return (
+        <main>
+            <h1>
+                {getGreeting()}!
+            </h1>
+            <Link to ="/moods/new" className="new-mood-btn">+ Add New Entry</Link>
+            {sortMoods.map((mood) => (
+                <div key={mood._id}>
+                    <Link to={`/moods/${mood._id}`}>
+                        <article>
+                            <header className="mood-list-header">
+                                <h2>{mood.rating}</h2>
+                                <p>{`${new Date(mood.createdAt).toLocaleDateString()}`}</p>
+                            </header>
+                        </article>
+                    </Link>
+                    <div>
+                        <p>{mood.moodLabel}</p>
+                        <p>{mood.note}</p>
+                    </div>
+                </div>
+            ))}
+        </main>
+    )
 };
 
 export default MoodList;

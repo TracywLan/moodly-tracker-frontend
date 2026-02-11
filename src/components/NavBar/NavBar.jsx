@@ -18,6 +18,7 @@ const NavBar = () => {
                 <ul>
                     <li><Link to='/' >HOME</Link></li>
                     <li><Link to='/moods' >MOODS</Link></li>
+                    {/* <li><Link to='/calendar'>Calendar</Link></li> */}
                     <li><Link to='/' onClick={handleSignOut}>Sign-out</Link></li>
                 </ul>
             ) : (
