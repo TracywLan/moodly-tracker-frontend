@@ -11,7 +11,7 @@ const initialState = {
 };
 
 const MoodForm = ({ handleAddMood, handleEditMood }) => {
-    const [formData,setFormData] =useState(initialState)
+    const [formData,setFormData] = useState(initialState)
     const { moodId } = useParams();
     const navigate = useNavigate();
 
@@ -52,11 +52,9 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         e.preventDefault();
 
         if(moodId) {
-            await handleEditMood(formData,moodId);
-            navigate(`/moods/${moodId}`)
+            await handleEditMood(moodId, formData);
         } else {
-           await  handleAddMood(formData);
-           navigate("/moods")
+            await  handleAddMood(formData);
         }
 
         setFormData(initialState)
