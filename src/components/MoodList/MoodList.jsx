@@ -27,12 +27,12 @@ const MoodList = ({ moods }) => {
           <div key={mood._id} style={{ border: "1px solid #ccc", padding: "10px", margin: "10px 0" }}>
             <Link to={`/moods/${mood._id}`}>
               <header className="mood-list-header">
-                <h2>{mood.rating}</h2>
-                <p>{new Date(mood.createdAt).toLocaleDateString()}</p>
+                <h2>{mood.moodLabel}</h2>
+                <p>Reason: {mood.note}</p>
+                <p>Posted by {mood.author.username}</p>
+                <p>Posted on {new Date(mood.createdAt).toLocaleDateString()}</p>
               </header>
               <div>
-                <p>{mood.moodLabel}</p>
-                <p>{mood.note}</p>
               </div>
             </Link>
 
