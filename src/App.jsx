@@ -9,7 +9,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 import MoodList from './components/MoodList/MoodList';
 import MoodDetails from './components/MoodDetails/MoodDetails';
 import Moodform from './components/MoodForm/Moodform';
-import CommentForm from './components/CommentForm/CommentForm';
 import * as moodService from './services/moodService';
 
 import { UserContext } from './contexts/UserContext';
@@ -31,10 +30,10 @@ const App = () => {
 
   const handleAddMood = async (formData) => {
     const newMood = await moodService.create(formData);
-    setMoods((prev) => [...prev,newMood])
+    setMoods((prev) => [newMood, ...prev])
   };
 
-  const handleEditMood = async (formData,moodId) => {
+  const handleEditMood = async (moodId,formData) => {
     const updatedMood = await moodService.update(moodId,formData);
     setMoods((prev) => prev.map((mood) =>
     mood._id === updatedMood._id ? updatedMood : mood
@@ -42,18 +41,9 @@ const App = () => {
 );
   };
 
-  const handleDeleteMood = (moodId) => {
+  const handleDeleteMood = async (moodId) => {
+    await moodService.deleteMood(moodId)
     setMoods((prev) => prev.filter((mood)=> mood._id !== moodId))
-  }
-
-  const handleAddComment = async ( formData,moodId) => {
-    const updatedMood = await moodService.addComment(moodId,formData);
-    return updatedMood;
-  }
-
-  const handleUpdateComment = async (formData,commentId,moodId) => {
-    const updatedMood = await moodService.updateComment(moodId,commentId,formData);
-    return updatedMood
   }
 
   return (

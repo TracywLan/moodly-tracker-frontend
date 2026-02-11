@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import {useNavigate, useParams} from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const initialState = {
     rating: 3,
@@ -53,13 +52,14 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         e.preventDefault();
 
         if(moodId) {
-            await handleEditMood(moodId, formData);
+            await handleEditMood(moodId,formData);
+            navigate("/moods")
         } else {
             await  handleAddMood(formData);
+            navigate("/moods")
         }
 
         setFormData(initialState);
-        navigate('/moods')
     };
 
     return (
