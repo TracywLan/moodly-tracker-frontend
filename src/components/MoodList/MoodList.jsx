@@ -24,7 +24,7 @@ const MoodList = (props) => {
     return (
         <main>
             <h1>
-                {getGreeting()}, {user ? user.username : 'Friend'}!
+                {getGreeting()}!
             </h1>
             <Link to ="/moods/new" className="new-mood-btn">+ Add New Entry</Link>
             {sortMoods.map((mood) => (
