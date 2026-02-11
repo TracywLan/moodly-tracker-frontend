@@ -1,13 +1,12 @@
-import { Link } from 'react-router';
-import { UserContext } from '../../contexts/UserContext';
-import { useContext } from 'react';
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
-const MoodList = (props) => {
-    const { user } = useContext(UserContext);
+const MoodList = ({ moods }) => {
+  const { user } = useContext(UserContext);
 
-    const filteredMoods = props.moods.filter(mood => {
+    const filteredMoods = moods.filter((mood) => {
         if (!mood.author) return false;
-
         return mood.author?._id?.toString() === user?._id?.toString();
     })
     const sortMoods = filteredMoods.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));

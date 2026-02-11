@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import * as moodService from "../../services/moodService";
 import CommentForm from "../CommentForm/CommentForm";
 
-export default function MoodDetails({ user }) {
+export default function MoodDetails({ user, handleDeleteMood }) {
   const { moodId } = useParams();
   const navigate = useNavigate();
 
@@ -17,6 +17,10 @@ export default function MoodDetails({ user }) {
     };
     fetchMood();
   }, [moodId]);
+  const handleDeleteClick = async () => {
+    await handleDeleteMood(moodId)
+    navigate("/moods")
+  }
 
   if (!mood) return <p>Loading...</p>;
 
@@ -108,6 +112,14 @@ export default function MoodDetails({ user }) {
 
       <br />
       <Link to="/moods">Back</Link>
+                  {isAuthor && (
+              <div style={{ marginTop: "10px" }}>
+                <Link to={`/moods/${mood._id}/edit`}>
+                  <button>Edit</button>
+                </Link>
+                <button onClick={handleDeleteClick}>Delete</button>
+              </div>
+            )}
     </main>
   );
 }
