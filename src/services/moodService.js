@@ -87,7 +87,8 @@ const addComment = async (moodId, commentFormData) => {
             throw new Error(errData.error || "Failed to add comment");
 
         }
-        return await res.json();
+         const updatedMood = await res.json()
+        return updatedMood
     } catch (error) {
         throw new Error(error.message);
     }
@@ -108,13 +109,14 @@ const updateComment = async (moodId, commentId, commentFormData) => {
         throw new Error(errData || "Failed to update comment")
     }
 
-    return await res.json();
+     const updatedMood = await res.json()
+        return updatedMood
     } catch (error) {
         throw new Error(error.message)
     }
 };
 
-const deleteComment = async (moodId, commentId) => {
+const deleteComment = async (moodId,commentId) => {
     try {
         const res = await fetch (`${BASE_URL}/${moodId}/comments/${commentId}`, {
             method: 'DELETE',
@@ -123,7 +125,8 @@ const deleteComment = async (moodId, commentId) => {
                 'Content-Type': 'application/json',
             },
         });
-        return res.json();
+        const updatedMood = await res.json()
+        return updatedMood
     } catch (error) {
         console.log(error);
     }
