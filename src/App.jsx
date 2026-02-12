@@ -13,7 +13,7 @@ import CommentForm from './components/CommentForm/CommentForm';
 import * as moodService from './services/moodService';
 import Community from './components/Community/Community';
 import { UserContext } from './contexts/UserContext';
-
+import AuthorInfo from './components/AuthorInfo/AuthorInfo';
 
 const App = () => {
   const [moods, setMoods] = useState([]);
@@ -59,6 +59,7 @@ const App = () => {
             <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
             <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/> 
             <Route path="/community" element= {<Community/>}/> 
+            <Route path="/users/:userId" element={<AuthorInfo/>} />
 
           </>
         ) : (
