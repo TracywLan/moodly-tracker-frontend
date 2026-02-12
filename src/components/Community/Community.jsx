@@ -25,7 +25,7 @@ const Community = () => {
                     <h3>{mood.moodLabel}</h3>
                     </Link>
                     <p>{mood.note}</p>
-                    <small>Posted by: {mood.author.username}</small>
+                    <small>Posted by: <Link to={`/users/${mood.author._id}`}>{mood.author.username}</Link></small>
                 </div>
             ))}
         </div>
