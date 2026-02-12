@@ -14,4 +14,5 @@ A mood tracking app that lets users log how they're feeling, veiw mood details, 
 
 
   ## Planning materials
+  [URL](https://trello.com/b/OSDBHhHT/mern-project-mood-tracker)
    
