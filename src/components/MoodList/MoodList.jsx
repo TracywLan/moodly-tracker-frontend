@@ -9,11 +9,8 @@ const MoodList = ({ moods }) => {
     const filteredMoods = moods.filter((mood) => {
         if (!mood.author) return false;
         return mood.author?._id?.toString() === user?._id?.toString();
-    });
-
-    const sortedMoods = filteredMoods.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
+    })
+    const sortedMoods = filteredMoods.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     const getGreeting = () => {
         const hour = new Date().getHours();
