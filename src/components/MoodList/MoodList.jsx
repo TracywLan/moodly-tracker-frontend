@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-// import './MoodList.css';
+import styles from './MoodList.module.css';
+import { getEmoji, getMoodColor } from '../../utils/moodUtils'
 
 const MoodList = ({ moods }) => {
     const { user } = useContext(UserContext);
@@ -21,30 +22,51 @@ const MoodList = ({ moods }) => {
     
 
     return (
-        <main>
-            <h1>
-                {getGreeting()}, {user?.username}!
-            </h1>
-            <Link to ="/moods/new" className="new-mood-btn">+ Add New Entry</Link>
-            {sortedMoods.map((mood) => (
-                <div key={mood._id}>
-                    <Link to={`/moods/${mood._id}`}>
-                        <article>
-                            <header className="mood-list-header">
-                                <h2>{mood.moodLabel}</h2>
-                                <p>{`${new Date(mood.createdAt).toLocaleDateString()}`}</p>
-                            </header>
+    <main className={styles.container}>
+        
+        <header className={styles.header}>
+            <h1>{getGreeting()}</h1>
+            <p>Don't let a bad day make you feel like you have a bad life.</p>
+            
+            <Link to="/moods/new" className={styles.newEntryBtn}>
+            + Add New Entry
+            </Link>
+        </header>
 
-                            <div className="mood-details">
-                                <p>{mood.rating}</p>
-                                <p>{mood.note}</p>
-                            </div>
-                        </article>
-                    </Link>
+        <div className={styles.cardsWrapper}>
+            {sortedMoods.map((mood) => (
+            <Link to={`/moods/${mood._id}`} key={mood._id} className={styles.cardLink}>
+                
+                <article className={styles.moodCard}>
+                
+                <div className={styles.dateBox}>
+                    <span className={styles.dateNumber}>
+                        {new Date(mood.createdAt).getDate()}
+                    </span>
+                    <span className={styles.dateMonth}>
+                        {new Date(mood.createdAt).toLocaleDateString('en-US', { month: 'short' })}
+                    </span>
                 </div>
+
+                <div className={styles.cardContent}>
+                    <div className={styles.cardTopRow}>
+                        <h3>{mood.moodLabel}</h3>
+                        <span className={styles.moodEmoji}>{getEmoji(mood.moodLabel)}</span>
+                    </div>
+                    <p className={styles.cardNote}>{mood.note}</p>
+                </div>
+
+                <div 
+                    className={styles.moodIndicator} 
+                    style={{ backgroundColor: getMoodColor(mood.moodLabel) }}
+                ></div>
+
+                </article>
+            </Link>
             ))}
+        </div>
         </main>
-    )
+    );
 };
 
 export default MoodList;

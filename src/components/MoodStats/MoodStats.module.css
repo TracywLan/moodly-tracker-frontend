@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
-.stats-container {
+.container {
     background: white;
     padding: 30px;
     border-radius: 30px; 
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); 
     font-family: 'DM Sans', sans-serif;
     max-width: 600px;
+    width: 400px;
     margin: 20px auto;
     position: relative;
 }
@@ -25,37 +26,13 @@
     color: #1F1F1F;
 }
 
-.stats-subtitle {
+.stats p {
     font-size: 14px;
     color: #A0AEC0; 
     margin: 5px 0 0 0;
     font-weight: 400;
 }
 
-.stats-toggle {
-    background: #F7FAFC;
-    padding: 5px;
-    border-radius: 20px;
-    display: flex;
-    gap: 5px;
-}
-
-.toggle-btn {
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    background: transparent;
-    color: #CBD5E0;
-}
-
-.toggle-btn.active {
-    background: white;
-    color: #1F1F1F;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
 
 .custom-legend {
     display: flex;
@@ -68,6 +45,7 @@
 .legend-item {
     display: flex;
     align-items: center;
+    flex-direction: row;
     gap: 6px;
     font-size: 12px;
     color: #4A5568;
