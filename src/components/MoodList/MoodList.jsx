@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import './MoodList.css';
+// import './MoodList.css';
 
 const MoodList = ({ moods }) => {
     const { user } = useContext(UserContext);
