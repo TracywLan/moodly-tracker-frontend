@@ -2,7 +2,7 @@
 
 
 .dashboard-container{
-    background-color: var(--bg-color);
+    background-color: white;
     display: flex;
     justify-content: center;
 }

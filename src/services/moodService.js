@@ -134,6 +134,18 @@ const deleteComment = async (moodId,commentId) => {
     }
 };
 
+const getCommunityMoods = async () => {
+    try {
+        const res = await fetch(`${BASE_URL}/community`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export { 
-    index,show,create,update,deleteMood, addComment, updateComment, deleteComment
+    index,show,create,update,deleteMood, addComment, updateComment, deleteComment, getCommunityMoods
 };

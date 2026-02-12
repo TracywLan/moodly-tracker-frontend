@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './Landing.css';
 
 const Landing = () => {
+
   return (
     <main className='landing-container'>
       <div className='landing-content'>
@@ -15,7 +16,11 @@ const Landing = () => {
         <Link to ="/sign-in" className="new-mood-btn">Get Started 😊😭😖😆</Link>
       </div>
     </main>
+
   );
+
 };
 
+
 export default Landing;
+

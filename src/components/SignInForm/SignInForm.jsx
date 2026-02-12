@@ -32,7 +32,9 @@ const SignInForm = () => {
 
   return (
     <main>
+      <div className="card">
       <h1>Sign In</h1>
+      </div>
       <p>{message}</p>
       <form autoComplete='off' onSubmit={handleSubmit}>
         <div>

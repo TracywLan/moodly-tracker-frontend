@@ -2,9 +2,9 @@
 import { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import * as userService from '../../services/userService';
-import MoodCalendar from '../MoodCalendar/MoodCalendar';
-import MoodList from '../MoodList/MoodList';
 import MoodStats from '../MoodStats/MoodStats'
+import MoodSummary from '../MoodSummary/MoodSummary.jsx';
+
 
 
 const Dashboard = ({ moods }) => {
