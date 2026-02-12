@@ -2,7 +2,12 @@ import { useState, useEffect } from "react"
 import {useNavigate, useParams} from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify";
+<<<<<<< HEAD
 
+=======
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
+>>>>>>> af39dcdc00a7ebdbe8ae064338109263214c0b21
 
 const initialState = {
     rating: 3,
@@ -12,6 +17,7 @@ const initialState = {
 };
 
 const MoodForm = ({ handleAddMood, handleEditMood }) => {
+    const { user } = useContext(UserContext);
     const [formData,setFormData] = useState(initialState)
     const { moodId } = useParams();
     const navigate = useNavigate();
@@ -53,18 +59,24 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
         e.preventDefault();
 
         if(moodId) {
-            await handleEditMood(moodId, formData);
+            await handleEditMood(moodId,formData);
+            navigate("/moods")
         } else {
             await  handleAddMood(formData);
+            navigate("/moods")
         }
 
         setFormData(initialState);
-        navigate('/moods')
     };
 
     return (
         <main>
+
             <div className="card">
+
+
+            <h1>Dear {user.username}</h1>
+            <h1>How are you feeling today?</h1>
 
             <h1>{moodId ? "Edit Mood" : "New Mood"}</h1>
             </div>

@@ -1,129 +1,125 @@
-import { useEffect, useState } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import * as moodService from "../../services/moodService";
+import CommentForm from "../CommentForm/CommentForm";
 
-export default function MoodDetails({ user,moods,setMoods }) {
-const { moodId } = useParams()
-const navigate = useNavigate()
+export default function MoodDetails({ user, handleDeleteMood }) {
+  const { moodId } = useParams();
+  const navigate = useNavigate();
 
-const [mood, setMood] = useState(null)
-const [error, setError] = useState("")
-const BASE_URL = "http://localhost:3000/moods"
+  const [mood, setMood] = useState(null);
+  const [editingCommentId, setEditingCommentId] = useState(null);
 
+  useEffect(() => {
+    const fetchMood = async () => {
+      const data = await moodService.show(moodId);
+      setMood(data);
+    };
+    fetchMood();
+  }, [moodId]);
+  const handleDeleteClick = async () => {
+    await handleDeleteMood(moodId)
+    navigate("/moods")
+  }
 
-useEffect(() => {
-const fetchMood = async () => {
-try {
-const res = await fetch(`${BASE_URL}/${moodId}`)
-const data = await res.json()
-setMood(data)
-} catch (err) {
-console.log(err)
-setError("Could not load mood.")
-}
-}
-fetchMood()
-}, [moodId])
+  if (!mood) return <p>Loading...</p>;
 
-
-const handleDelete = async () => {
-try {
-    await fetch(`${BASE_URL}/${moodId}`, {
-    method: "DELETE",
-    headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-}
-})
-setMoods(moods.filter((mood)=> mood._id !==moodId))
-navigate("/moods")
-} catch (err) {
-console.log(err)
-setError("Could not delete mood.")
-}
-}
-
-if (error) return <p>{error}</p>
-if (!mood) return <p>Loading...</p>
+  const isAuthor =
+    user?._id ===
+    (typeof mood.author === "string"
+      ? mood.author
+      : mood.author?._id);
 
 
-const authorId =
-typeof mood.author === "string"
-? mood.author
-: mood.author?._id
+  const handleAddComment = async (formData) => {
+    const updatedMood = await moodService.addComment(
+      moodId,
+      formData
+    );
+    setMood(updatedMood);
+  };
 
-const isAuthor = user?._id === authorId
+  const handleUpdateComment = async (formData, commentId) => {
+    const updatedMood = await moodService.updateComment(
+      moodId,
+      commentId,
+      formData
+    );
+    setMood(updatedMood);
+    setEditingCommentId(null);
+  };
 
-return (
-<main>
-    <div className="card">
+  const handleDeleteComment = async (commentId) => {
+    const updatedMood = await moodService.deleteComment(moodId,commentId);
+    setMood(updatedMood);
+  };
 
-<h1>Mood Details</h1>
-</div>
+  return (
+    <main>
+      <h1>Mood Details</h1>
 
-<section className="card">
+      <p><strong>Rating:</strong> {mood.rating}</p>
+      <p><strong>Mood:</strong> {mood.moodLabel}</p>
+      <p><strong>Note:</strong> {mood.note}</p>
 
-{/* Rating */}
-<p>
-<strong>Rating:</strong> {mood.rating} / 5
-</p>
+      <hr />
 
-{/* Mood Label */}
-<p>
-<strong>Mood:</strong> {mood.moodLabel}
-</p>
+    
+      <h2>Comments</h2>
 
-{/* Activities */}
-<div>
-<strong>Activities:</strong>
-{mood.activities?.length ? (
-<ul>
-{mood.activities.map((act, i) => (
-<li key={i}>{act}</li>
-))}
-</ul>
-) : (
-<p>None selected</p>
-)}
-</div>
+      <CommentForm handleAddComment={handleAddComment} />
 
-{/* Note */}
-<p>
-<strong>Note:</strong> {mood.note || "No note added"}
-</p>
+      {mood.comments?.map((comment) => {
+        const commentAuthorId =
+          typeof comment.author === "string"
+            ? comment.author
+            : comment.author?._id;
 
-{/* Date */}
-{mood.createdAt && (
-<p>
-<strong>Date:</strong>{" "}
-{new Date(mood.createdAt).toLocaleString()}
-</p>
-)}
+        const isCommentOwner =
+          user?._id === commentAuthorId;
 
-{/* ACTION BUTTONS */}
-<div className="actions">
-<Link className="btn" to="/moods">
-Back
-</Link>
+        return (
+          <div key={comment._id} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
+            <p>{comment.text}</p>
 
-{isAuthor && (
-<>
-<Link
-className="btn btnPrimary"
-to={`/moods/${moodId}/edit`}
->
-Edit
-</Link>
+            <small>
+              Posted by: {comment.author?.username || "Unknown"} |{" "}
+              {new Date(comment.createdAt).toLocaleString()}
+            </small>
 
-<button
-className="btn btnDanger"
-onClick={handleDelete}
->
-Delete
-</button>
-</>
-)}
-</div>
-</section>
+            {isCommentOwner && (
+              <div>
+                <button onClick={() => setEditingCommentId(comment._id)}>
+                  Edit
+                </button>
+                <button onClick={() => handleDeleteComment(comment._id)}>
+                  Delete
+                </button>
+              </div>
+            )}
 
-</main>
-)
+            {editingCommentId === comment._id && (
+              <CommentForm
+                handleUpdateComment={(formData) =>
+                  handleUpdateComment(formData, comment._id)
+                }
+                existingText={comment.text}
+              />
+            )}
+          </div>
+        );
+      })}
+
+      <br />
+      <Link to="/moods">Back</Link>
+                  {isAuthor && (
+              <div style={{ marginTop: "10px" }}>
+                <Link to={`/moods/${mood._id}/edit`}>
+                  <button>Edit</button>
+                </Link>
+                <button onClick={handleDeleteClick}>Delete</button>
+              </div>
+            )}
+    </main>
+  );
 }

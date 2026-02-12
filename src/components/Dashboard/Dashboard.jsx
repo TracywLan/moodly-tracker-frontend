@@ -1,12 +1,12 @@
+
 import { useEffect, useState, useContext } from 'react';
-
 import { UserContext } from '../../contexts/UserContext';
-
 import * as userService from '../../services/userService';
+import MoodCalendar from '../MoodCalendar/MoodCalendar';
+import MoodList from '../MoodList/MoodList';
 
 
-
-const Dashboard = () => {
+const Dashboard = (moods) => {
   const { user } = useContext(UserContext);
   const [ users, setUsers ] = useState([]);
 
@@ -23,18 +23,9 @@ const Dashboard = () => {
   }, [user]);
 
   return (
-    <main>
+    <main className='dashboard-container'>
       <h1>Welcome, {user.username}</h1>
-      <p><h2>
-        This is the dashboard page where you can see a list of all the users.
-      </h2></p>
-      <ul>
-        <h2>
-        {users.map(user => (
-          <li key={user._id}>{user.username}</li>
-        ))}
-        </h2>
-      </ul>
+      <MoodCalendar moods={moods}/>
     </main>
   );
 };
