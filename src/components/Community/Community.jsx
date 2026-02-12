@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 import * as moodService from '../../services/moodService'
 
 
@@ -20,7 +21,9 @@ const Community = () => {
 
             {moods.map((mood)=> (
                 <div key={mood._id} className="mood-card">
+                    <Link to={`/moods/${mood._id}`}>
                     <h3>{mood.title}</h3>
+                    </Link>
                     <p>{mood.description}</p>
                     <small>Posted by: {mood.author.username}</small>
                 </div>
