@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import {useNavigate, useParams} from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify";
-import { useNavigate } from "react-router-dom";
+
 
 const initialState = {
     rating: 3,
@@ -64,7 +64,11 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
 
     return (
         <main>
+            <div className="card">
+
             <h1>{moodId ? "Edit Mood" : "New Mood"}</h1>
+            </div>
+
             <form onSubmit={handleSubmit}>{/*Rating*/}
                 <label htmlFor="rating-input">Rating (1-5)</label>
                 <input 
@@ -86,16 +90,16 @@ const MoodForm = ({ handleAddMood, handleEditMood }) => {
                  value={formData.moodLabel}
                  onChange={handleChange}
                  >
-                    <option value="very-sad">Very Sad</option>
-                    <option value="sad">Sad</option>
-                    <option value="neutral">Neutral</option>
-                    <option value="happy">Happy</option>
-                    <option value="very-happy">Very Happy</option>
-                    <option value="anxious">Anxious</option>
-                    <option value="angry">Angry</option>
-                    <option value="excited">Excited</option>
-                    <option value="tired">Tired</option>
-                    <option value="calm">Calm</option>
+                    <option value="very-sad">Very Sad😭</option>
+                    <option value="sad">Sad😢</option>
+                    <option value="neutral">Neutral😐</option>
+                    <option value="happy">Happy😊</option>
+                    <option value="very-happy">Very Happy😁</option>
+                    <option value="anxious">Anxious😰</option>
+                    <option value="angry">Angry😡</option>
+                    <option value="excited">Excited😃</option>
+                    <option value="tired">Tired😴</option>
+                    <option value="calm">Calm🙏</option>
                  </select>
 
                  {/* Activities */}

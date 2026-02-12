@@ -46,10 +46,7 @@ const App = () => {
     setMoods((prev) => prev.filter((mood)=> mood._id !== moodId))
   }
 
-  const handleAddComment = async ( formData,moodId) => {
-    const updatedMood = await moodService.addComment(formData,moodId);
-    return updatedMood;
-  }
+  
 
   const handleAddComment = async (moodId, formData) => {
     const comment = await moodService.addComment(moodId, formData);

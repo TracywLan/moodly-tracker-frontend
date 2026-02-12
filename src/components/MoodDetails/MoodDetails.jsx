@@ -54,7 +54,10 @@ const isAuthor = user?._id === authorId
 
 return (
 <main>
+    <div className="card">
+
 <h1>Mood Details</h1>
+</div>
 
 <section className="card">
 
