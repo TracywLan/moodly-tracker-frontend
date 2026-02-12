@@ -22,9 +22,9 @@ const Community = () => {
             {moods.map((mood)=> (
                 <div key={mood._id} className="mood-card">
                     <Link to={`/moods/${mood._id}`}>
-                    <h3>{mood.title}</h3>
+                    <h3>{mood.moodLabel}</h3>
                     </Link>
-                    <p>{mood.description}</p>
+                    <p>{mood.note}</p>
                     <small>Posted by: {mood.author.username}</small>
                 </div>
             ))}
