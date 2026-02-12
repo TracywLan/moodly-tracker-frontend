@@ -140,11 +140,15 @@ const getCommunityMoods = async () => {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
-        })
+        });
+
+        const data = await res.json();
+        return data;
+
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 
 export { 
     index,show,create,update,deleteMood, addComment, updateComment, deleteComment, getCommunityMoods
