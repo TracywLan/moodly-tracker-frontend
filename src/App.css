@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+:root {
+    --color1: #f983a0;
+    --accent: #f15079;
+    --text: #1A1A1A;
+    --text-light: #888;
+}
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: linear-gradient(#ffdce2, #f7c9ce);
   min-height: 100vh;
-
 }
 
 
@@ -22,22 +29,19 @@ main {
 
 
 form {
-
   background: white;
   padding: 28px;
   border-radius: 20px;
   border: 3px solid #f7a9b8;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  width: 320px;
-
+  width: 50%;
+  min-width: 240px;
 }
 
 
 h1, h2 {
 
   font-family: "Fraunces", serif;
-  ext-align: center;
-
 }
 
 
@@ -142,14 +146,7 @@ form div:last-child {
 
   background: black;
   color: white;
-
-
-  navbar 
-    display: none;
-  }
-
-  
-
+}
 
 
 .new-mood-btn,

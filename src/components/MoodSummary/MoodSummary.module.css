@@ -1,0 +1,58 @@
+
+.card {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    gap:60px;
+    color: var(--text);
+    padding: 10px;
+}
+
+.totalLog{
+    background: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    margin: 10px;
+    font-family: 'DM Sans', sans-serif;
+    border-radius: 20px;
+}
+
+.totalLog h3{
+    color:var(--text);
+    font-size:36px;
+    margin: -2px;
+}
+
+.totalLog p{
+    color: var(--text-light)
+}
+
+.todayEntry{
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.icon{
+    padding: 15px 0;
+    margin: auto;
+    font-size: xxx-large;
+}
+
+.text{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+}
