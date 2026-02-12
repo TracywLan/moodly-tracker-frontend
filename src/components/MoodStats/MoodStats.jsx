@@ -32,7 +32,7 @@ const MoodStats = ({ moods }) => {
             
             <div className="stats-header">
                 <div>
-                    <h3>Satisfaction</h3>
+                    <h3>Your Mood Trend</h3>
                     <p>Based on daily mood log</p>
                 </div>
             </div>
@@ -43,7 +43,7 @@ const MoodStats = ({ moods }) => {
                         <XAxis dataKey="name" hide />
                         <Bar 
                             dataKey="count" 
-                            barSize={40} 
+                            barSize={60} 
                             radius={[20, 20, 20, 20]} 
                         >
                             {cleanData.map((entry, index) => (
