@@ -1,13 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import {useNavigate, useParams} from "react-router-dom"
 import * as moodService from "../../services/moodService"
 import {toast} from "react-toastify";
-<<<<<<< HEAD
-
-=======
-import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
->>>>>>> af39dcdc00a7ebdbe8ae064338109263214c0b21
 
 const initialState = {
     rating: 3,

@@ -10,7 +10,7 @@ import MoodList from './components/MoodList/MoodList';
 import MoodDetails from './components/MoodDetails/MoodDetails';
 import Moodform from './components/MoodForm/Moodform';
 import * as moodService from './services/moodService';
-
+import Community from './components/Community/Community';
 import { UserContext } from './contexts/UserContext';
 
 
@@ -56,7 +56,8 @@ const App = () => {
             <Route path='/moods' element={ <MoodList moods={moods} />} />   
             <Route path='/moods/:moodId' element={<MoodDetails user={user} moods={moods} setMoods={setMoods} handleDeleteMood={handleDeleteMood}/>} /> 
             <Route path='/moods/new' element={<Moodform handleAddMood={handleAddMood}/>} /> 
-            <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/>  
+            <Route path='/moods/:moodId/edit' element={<Moodform handleEditMood={handleEditMood}/>}/> 
+            <Route path="/community" element= {<Community/>}/> 
 
           </>
         ) : (
