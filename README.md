@@ -33,3 +33,6 @@ A mood tracking app that lets users log how they're feeling, view mood details, 
 - npm
 
    
+## Atttribute
+[Smile icons created by June Design - Flatico](https://www.flaticon.com/free-icons/smile)
+App logo by ChatGPT
