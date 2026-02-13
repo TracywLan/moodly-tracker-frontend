@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import * as moodService from '../../services/moodService'
-
+import styles from './Community.module.css'
 
 const Community = () => {
     const [moods,setMoods] = useState([]);
@@ -16,18 +16,27 @@ const Community = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Community</h1>
-
-            {moods.map((mood)=> (
-                <div key={mood._id} className="mood-card">
-                    <Link to={`/moods/${mood._id}`}>
+        <div className={styles.container}>
+            <h1 className={styles.header}>Community</h1>
+            <div className={styles.cardsWrapper}>
+                {moods.map((mood)=> (
+                <div key={mood._id} className={styles.moodCard}>
+                    <Link to={`/moods/${mood._id}`} className={styles.cardLink}>
                     <h3>{mood.moodLabel}</h3>
                     </Link>
-                    <p>{mood.note}</p>
-                    <small>Posted by: <Link to={`/users/${mood.author._id}`}>{mood.author.username}</Link></small>
+                    <p className={styles.cardNote}>{mood.note}</p>
+                    <small className={styles.userBox}>
+                        Posted by:   
+                        {mood.author ? (
+                        <Link to={`/users/${mood.author._id}`} className={styles.cardLink}>{mood.author.username}</Link>
+                        ) : (
+                            <span>Unknown User</span>
+                        )}
+                    </small>
                 </div>
             ))}
+            </div>
+            
         </div>
     )
 }
