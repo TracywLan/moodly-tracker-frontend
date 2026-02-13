@@ -27,7 +27,7 @@ const Community = () => {
                     </Link>
                     <p className={styles.cardNote}>{mood.note}</p>
                     <small className={styles.userBox}>
-                        <p>Posted by:</p>   
+                        <p>Posted by: </p>   
                         {mood.author ? (
                             <div className={styles.userContent}>
                             <Link to={`/users/${mood.author._id}`} className={styles.cardLink}>
