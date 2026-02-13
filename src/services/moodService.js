@@ -140,12 +140,24 @@ const getCommunityMoods = async () => {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
-        })
+        });
+
+        const data = await res.json();
+        return data;
+
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
+};
+const authorInfo = async (userId) => {
+    const res = await fetch(`${BASE_URL}/users/${userId}`,{
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+    })
+    return res.json()
 }
 
 export { 
-    index,show,create,update,deleteMood, addComment, updateComment, deleteComment, getCommunityMoods
+    index,show,create,update,deleteMood, addComment, updateComment, deleteComment, getCommunityMoods, authorInfo
 };

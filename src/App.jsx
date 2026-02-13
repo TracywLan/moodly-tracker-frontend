@@ -8,12 +8,12 @@ import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import MoodList from './components/MoodList/MoodList';
 import MoodDetails from './components/MoodDetails/MoodDetails';
-import MoodForm from './components/MoodForm/Moodform';
+import Moodform from './components/MoodForm/MoodForm';
 import CommentForm from './components/CommentForm/CommentForm';
 import * as moodService from './services/moodService';
 import Community from './components/Community/Community';
 import { UserContext } from './contexts/UserContext';
-
+import AuthorInfo from './components/AuthorInfo/AuthorInfo';
 
 const App = () => {
   const [moods, setMoods] = useState([]);
@@ -59,6 +59,7 @@ const App = () => {
             <Route path='/moods/new' element={<MoodForm handleAddMood={handleAddMood}/>} /> 
             <Route path='/moods/:moodId/edit' element={<MoodForm handleEditMood={handleEditMood}/>}/> 
             <Route path="/community" element= {<Community/>}/> 
+            <Route path="/users/:userId" element={<AuthorInfo/>} />
 
           </>
         ) : (
