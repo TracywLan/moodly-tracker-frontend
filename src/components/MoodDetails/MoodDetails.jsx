@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as moodService from "../../services/moodService";
 import CommentForm from "../CommentForm/CommentForm";
+import Loading from "../Loading/Loading";
 
 export default function MoodDetails({ user, handleDeleteMood }) {
   const { moodId } = useParams();
@@ -22,7 +23,7 @@ export default function MoodDetails({ user, handleDeleteMood }) {
     navigate("/moods")
   }
 
-  if (!mood) return <p>Loading...</p>;
+  if (!mood) return <Loading />
 
   const isAuthor =
     user?._id ===
