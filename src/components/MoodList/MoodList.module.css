@@ -7,7 +7,7 @@
     margin: 0 auto;
     padding: auto;
     font-family: 'DM Sans', sans-serif;
-    background: var(--color2);
+    background: linear-gradient(180deg, #ffd6ec, #ffeaf6);
 }
 .header {
     display: flex;

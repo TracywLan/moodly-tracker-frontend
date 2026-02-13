@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router';
+import { Routes, Route } from 'react-router';
 import "./App.css"
 import NavBar from './components/NavBar/NavBar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
@@ -8,8 +8,7 @@ import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import MoodList from './components/MoodList/MoodList';
 import MoodDetails from './components/MoodDetails/MoodDetails';
-import Moodform from './components/MoodForm/MoodForm';
-import CommentForm from './components/CommentForm/CommentForm';
+import MoodForm from './components/MoodForm/MoodForm';
 import * as moodService from './services/moodService';
 import Community from './components/Community/Community';
 import { UserContext } from './contexts/UserContext';
@@ -31,7 +30,8 @@ const App = () => {
 
   const handleAddMood = async (formData) => {
     const newMood = await moodService.create(formData);
-    setMoods((prev) => [newMood, ...prev])
+    const newMoodWithUser = { ...newMood, author: user };
+    setMoods((prev) => [newMoodWithUser, ...prev]);
   };
 
   const handleEditMood = async (moodId,formData) => {

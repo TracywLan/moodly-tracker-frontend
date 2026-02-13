@@ -7,9 +7,13 @@ import { getEmoji, getMoodColor } from '../../utils/moodUtils'
 const MoodList = ({ moods }) => {
     const { user } = useContext(UserContext);
 
+    if (!moods || !user) {
+        return <div className={styles.loading}>Loading...</div>;
+    }
+
     const filteredMoods = moods.filter((mood) => {
         if (!mood.author) return false;
-        return mood.author._id.toString() === user._id.toString();
+        return mood.author._id === user._id;
     })
     const sortedMoods = filteredMoods.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 

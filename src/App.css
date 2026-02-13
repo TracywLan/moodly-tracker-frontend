@@ -4,8 +4,10 @@
     --color2:#ffdce2;
     --accent: #f15079;
     --text: #1A1A1A;
+    --text2: #4f4f4f;
     --text-light: #888;
     --border: rgba(0, 0, 0, 0.089);
+    
 }
 
 body {
@@ -13,6 +15,7 @@ body {
   font-family: "Inter", sans-serif;
   background: linear-gradient(#ffdce2, #f7c9ce);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 
@@ -178,7 +181,7 @@ main {
 
 h1 {
   text-align: center;
-  color: #6b3f66;
+  color: var(--text2);
   margin-bottom: 15px;
 }
 
