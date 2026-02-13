@@ -1,12 +1,14 @@
 
 .card {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-direction: row;
     align-items: center;
     gap:60px;
     color: var(--text);
     padding: 10px;
+    margin: 0;
+    width: 500px;
 }
 
 .totalLog{
@@ -17,7 +19,7 @@
     width: 100px;
     height: 100px;
     padding: 30px;
-    margin: 10px;
+
     font-family: 'DM Sans', sans-serif;
     border-radius: 20px;
 }
@@ -41,7 +43,7 @@
     width: 100px;
     height: 100px;
     padding: 30px;
-    margin: 10px;
+    /* margin: 10px; */
     border-radius: 20px;
 }
 

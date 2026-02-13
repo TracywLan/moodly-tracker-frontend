@@ -5,6 +5,7 @@
     --accent: #f15079;
     --text: #1A1A1A;
     --text-light: #888;
+    --border: rgba(0, 0, 0, 0.089);
 }
 
 body {
@@ -24,8 +25,8 @@ main {
   align-items: center;     
   gap: 28px;
   padding: 40px 16px;
-
 }
+    
 
 
 
