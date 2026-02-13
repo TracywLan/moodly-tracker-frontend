@@ -11,7 +11,7 @@ A mood tracking app that lets users log how they're feeling, view mood details, 
 
 ## Getting started
 
--[Deployed website](https://mo0dlytracker.netlify.app/)
+-[Deployed website](https://moodly-moodtracker.netlify.app/)
 
 -Planning materials [Trello](https://trello.com/b/OSDBHhHT/mern-project-mood-tracker)
 
@@ -34,5 +34,7 @@ A mood tracking app that lets users log how they're feeling, view mood details, 
 
    
 ## Atttribute
-[Smile icons created by June Design - Flatico](https://www.flaticon.com/free-icons/smile)
-App logo by ChatGPT
+- [Smile icons created by June Design - Flatico](https://www.flaticon.com/free-icons/smile)
+- App logo by ChatGPT
+- [recharts](https://recharts.github.io/en-US/guide/)
+- [Hoot Tutorial](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-hoot-front-end/canvas-landing-pages/seb.html)
