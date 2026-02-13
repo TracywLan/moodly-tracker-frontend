@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
 :root {
     --color1: #f983a0;
+    --color2:#ffdce2;
     --accent: #f15079;
     --text: #1A1A1A;
+    --text2: #4f4f4f;
     --text-light: #888;
+    --border: rgba(0, 0, 0, 0.089);
+    
 }
 
 body {
@@ -11,6 +15,7 @@ body {
   font-family: "Inter", sans-serif;
   background: linear-gradient(#ffdce2, #f7c9ce);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 
@@ -23,8 +28,8 @@ main {
   align-items: center;     
   gap: 28px;
   padding: 40px 16px;
-
 }
+    
 
 
 
@@ -176,7 +181,7 @@ main {
 
 h1 {
   text-align: center;
-  color: #6b3f66;
+  color: var(--text2);
   margin-bottom: 15px;
 }
 

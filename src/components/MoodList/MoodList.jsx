@@ -2,14 +2,18 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import styles from './MoodList.module.css';
-import { getEmoji, getMoodColor } from '../../utils/moodUtils'
+import { getEmoji } from '../../utils/moodUtils'
 
 const MoodList = ({ moods }) => {
     const { user } = useContext(UserContext);
 
+    if (!moods || !user) {
+        return <div className={styles.loading}>Loading...</div>;
+    }
+
     const filteredMoods = moods.filter((mood) => {
         if (!mood.author) return false;
-        return mood.author._id.toString() === user._id.toString();
+        return mood.author._id === user._id;
     })
     const sortedMoods = filteredMoods.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
@@ -55,12 +59,6 @@ const MoodList = ({ moods }) => {
                     </div>
                     <p className={styles.cardNote}>{mood.note}</p>
                 </div>
-
-                <div 
-                    className={styles.moodIndicator} 
-                    style={{ backgroundColor: getMoodColor(mood.moodLabel) }}
-                ></div>
-
                 </article>
             </Link>
             ))}

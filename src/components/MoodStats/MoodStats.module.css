@@ -1,60 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 .container {
     background: white;
-    padding: 30px;
+    padding: 1.5rem;
     border-radius: 30px; 
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 10px 40px var(--border); 
     font-family: 'DM Sans', sans-serif;
-    max-width: 600px;
-    width: 400px;
+    width: 500px;
     margin: 20px auto;
-    position: relative;
 }
 
-.stats-header {
+.header{
+    color: #333;
+    padding: 0 20px;
+}
+
+.header h3{
+    font-size: larger;
+    
+}
+
+.header p {
+    color: var(--accent)
+}
+
+.chartContainer{
+    width: 100%;
+    height: 250px;
+}
+
+.legend{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 30px;
-}
-
-.stats-header h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 0;
-    color: #1F1F1F;
-}
-
-.stats p {
-    font-size: 14px;
-    color: #A0AEC0; 
-    margin: 5px 0 0 0;
-    font-weight: 400;
-}
-
-
-.custom-legend {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 10px;
 }
 
-.legend-item {
+.legendItem {
     display: flex;
     align-items: center;
-    flex-direction: row;
     gap: 6px;
-    font-size: 12px;
-    color: #4A5568;
-    font-weight: 500;
-    text-transform: capitalize;
+    font-size: 0.85rem;
+    color: #555;
+    background-color: #f9f9f900;
+    padding: 4px 10px;
+    border-radius: 20px;
 }
-
-.legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+.emoji {
+    font-size: 1.2rem;
 }
