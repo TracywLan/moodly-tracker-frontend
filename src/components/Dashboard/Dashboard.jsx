@@ -4,7 +4,7 @@ import { UserContext } from '../../contexts/UserContext';
 import * as userService from '../../services/userService';
 import MoodStats from '../MoodStats/MoodStats'
 import MoodSummary from '../MoodSummary/MoodSummary.jsx';
-
+import styles from './Dashboard.module.css'
 
 
 const Dashboard = ({ moods }) => {

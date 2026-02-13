@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import styles from './MoodList.module.css';
-import { getEmoji, getMoodColor } from '../../utils/moodUtils'
+import { getEmoji } from '../../utils/moodUtils'
 
 const MoodList = ({ moods }) => {
     const { user } = useContext(UserContext);
@@ -59,12 +59,6 @@ const MoodList = ({ moods }) => {
                     </div>
                     <p className={styles.cardNote}>{mood.note}</p>
                 </div>
-
-                <div 
-                    className={styles.moodIndicator} 
-                    style={{ backgroundColor: getMoodColor(mood.moodLabel) }}
-                ></div>
-
                 </article>
             </Link>
             ))}

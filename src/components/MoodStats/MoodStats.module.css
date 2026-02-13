@@ -1,14 +1,49 @@
 
 .container {
     background: white;
-    padding: 30px;
+    padding: 1.5rem;
     border-radius: 30px; 
-    border: 1px solid var(--border);;
     box-shadow: 0 10px 40px var(--border); 
     font-family: 'DM Sans', sans-serif;
-    max-width: 600px;
-    width: 400px;
+    width: 500px;
     margin: 20px auto;
-    position: relative;
 }
 
+.header{
+    color: #333;
+    padding: 0 20px;
+}
+
+.header h3{
+    font-size: larger;
+    
+}
+
+.header p {
+    color: var(--accent)
+}
+
+.chartContainer{
+    width: 100%;
+    height: 250px;
+}
+
+.legend{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #555;
+    background-color: #f9f9f900;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+.emoji {
+    font-size: 1.2rem;
+}

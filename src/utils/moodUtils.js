@@ -18,10 +18,3 @@ export const getEmoji = (moodLabel) => {
         return '🙂'
     }
 
-export const getMoodColor = (rating) => {
-    if (rating >= 5) return '#f472b6'; 
-    if (rating === 4) return '#fbcfe8'; 
-    if (rating === 3) return '#fef08a'; 
-    if (rating === 2) return '#bae6fd'; 
-    return '#cbd5e1';                   
-};
