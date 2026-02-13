@@ -1,0 +1,75 @@
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: auto;
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(180deg, #ffd6ec, #ffeaf6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 80vw;
+}
+
+.header h1{
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+}
+
+
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+}
+
+.cardLink {
+    text-decoration: none;
+    color: var(--accent);
+    display: block;
+    padding-left: 10px;
+}
+
+.moodCard {
+    background:white;
+    border-radius: 24px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    box-shadow: 0 8px 20px rgba(175, 154, 135, 0.1);
+    margin: 20px;
+    width: 600px;
+}
+
+.userBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    min-width: 40px;
+    border-left: 1px solid var(--border);
+    padding-left: 15px;
+}
+
+.cardNote {
+    font-size: 14px;
+    color: #666;
+    width: 50%;
+    overflow: hidden;
+}
+
+
