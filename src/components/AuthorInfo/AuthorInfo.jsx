@@ -1,6 +1,8 @@
 import { useEffect,useState} from 'react'
 import { useParams, Link } from 'react-router-dom';
 import * as moodService from "../../services/moodService"
+import styles from '../Community/Community.module.css'
+import ProfileIcon from '../../assets/profile.png';
 
 const AuthorInfo = () => {
     const { userId } = useParams();
@@ -22,20 +24,32 @@ const AuthorInfo = () => {
     fetchUserMoods();
   }, [userId]);
   return (
-     <main>
-      <h1>{authorName}'s Moods Entries</h1>
-       {moods.length === 0 && <p>This user has not posted any entries yet</p>}
+     <main className={styles.container}>
+      <h1 className={styles.header}>
+        <img
+        src={ProfileIcon}
+        alt="The user's avatar"
+      />
+        {authorName}
+      </h1>
+      <h3>Moods Entries</h3>
+      <div className={styles.cardWrapper}>
+          {moods.length === 0 && <p>This user has not posted any entries yet</p>}
+
       {moods.map((mood) => (
-        <div key={mood._id} style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}>
-          <Link to={`/moods/${mood._id}`}>
+          <div key={mood._id} className={styles.moodCard}>
+          <Link to={`/moods/${mood._id}`} className={styles.cardLink}>
             <h3>{mood.moodLabel}</h3>
           </Link>
           <p>Rating: {mood.rating}</p>
           <p>{mood.note}</p>
         </div>
       ))}
+    </div>
 
-      <Link to="/community">Back to Community</Link>
+    <div className={styles.btn}>
+    <Link to="/community" className={styles.btnLink}>Back to Community</Link>
+    </div>
     </main>
   )
 }

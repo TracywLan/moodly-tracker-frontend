@@ -27,6 +27,9 @@
     font-size: 36px;
 }
 
+.header img {
+    width: 100px;
+}
 
 .cardWrapper {
     display: flex;
@@ -38,7 +41,10 @@
 .cardLink {
     text-decoration: none;
     color: var(--accent);
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-left: 10px;
 }
 
@@ -59,10 +65,25 @@
 .userBox {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: end;
+    align-items: center;
     min-width: 40px;
     border-left: 1px solid var(--border);
     padding-left: 15px;
+}
+
+.userContent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.userContent img{
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 .cardNote {
@@ -73,3 +94,30 @@
 }
 
 
+.btn {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    background: var(--color1);
+    color: white;
+    padding: 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 900;
+    gap: 20px;
+    width: 240px;
+}
+
+
+
+.btn:hover {
+    background: var(--accent);
+}
+
+.btnLink {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    display: block;
+    padding: 10px;
+}

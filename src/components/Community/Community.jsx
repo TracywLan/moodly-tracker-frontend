@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import * as moodService from '../../services/moodService'
 import styles from './Community.module.css'
+import ProfileIcon from '../../assets/profile.png';
 
 const Community = () => {
     const [moods,setMoods] = useState([]);
@@ -26,9 +27,14 @@ const Community = () => {
                     </Link>
                     <p className={styles.cardNote}>{mood.note}</p>
                     <small className={styles.userBox}>
-                        Posted by:   
+                        <p>Posted by:</p>   
                         {mood.author ? (
-                        <Link to={`/users/${mood.author._id}`} className={styles.cardLink}>{mood.author.username}</Link>
+                            <div className={styles.userContent}>
+                            <Link to={`/users/${mood.author._id}`} className={styles.cardLink}>
+                                <img src={ProfileIcon} alt="The user's avatar" />
+                                {mood.author.username}
+                            </Link>
+                            </div>
                         ) : (
                             <span>Unknown User</span>
                         )}
